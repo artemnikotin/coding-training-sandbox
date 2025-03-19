@@ -53,11 +53,11 @@ public class MedianQueue {
     }
 
     private void rebalance() {
-        while (smaller.size() - bigger.size() > 1) {
-            bigger.add(smaller.remove());
-        }
         while (bigger.size() - smaller.size() > 0) {
             smaller.add(bigger.remove());
+        }
+        while (smaller.size() - bigger.size() > 1) {
+            bigger.add(smaller.remove());
         }
     }
 

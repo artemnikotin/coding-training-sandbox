@@ -8,16 +8,16 @@ import java.util.ArrayList;
  */
 public class DecimalDominants {
     private final int[] arr;
-    private final ArrayList<Integer> dd;
+    private final ArrayList<Integer> results;
 
     DecimalDominants(int[] arr) {
         this.arr = arr.clone();
-        this.dd = new ArrayList<>();
+        this.results = new ArrayList<>();
         count(0, arr.length - 1);
     }
 
-    public ArrayList<Integer> getDd() {
-        return dd;
+    public ArrayList<Integer> getResults() {
+        return results;
     }
 
     private void count(int lo, int hi) {
@@ -41,7 +41,7 @@ public class DecimalDominants {
         }
         int occurrences = gt - lt + 1;
         if (occurrences > arr.length / 10) {
-            dd.add(v);
+            results.add(v);
         }
         count(lo, lt - 1);
         count(gt + 1, hi);
@@ -60,6 +60,6 @@ public class DecimalDominants {
                 3, 2, 5, 1, 1, 2, 2, 2, 7, 6, 5, 2, 1, 2, 4, 5, 6, 8,
         };
         var dd = new DecimalDominants(arr);
-        System.out.println(dd.getDd()); // Output: [1, 2, 5]
+        System.out.println(dd.getResults()); // Output: [1, 2, 5]
     }
 }

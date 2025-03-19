@@ -1,4 +1,13 @@
+# IntelliJ IDEA
+*.iml
+out/
 .idea/
+
+# VSCode
 .vscode/
+
+# Mac OS
 .DS_Store
+
+# Other
 algs4.jar

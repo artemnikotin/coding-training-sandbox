@@ -5,3 +5,7 @@
 - [ ] merge sort
 - [ ] quick sort
 - [ ] heap sort
+
+### bst
+- [ ] morris in-order traversal
+- [ ] morris pre-order traversal

@@ -25,8 +25,9 @@ public class Taxicab {
                 solutions.add(new Solution(previous, current));
             }
 
-            if (current.b <= n)
+            if (current.b <= n) {
                 pq.add(new Expression(current.a, current.b + 1));
+            }
 
             previous = current;
         }
