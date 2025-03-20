@@ -1,5 +1,9 @@
 package cts.common.sort;
 
+/**
+ * Compares: ~ n^2 / 2
+ * Exchanges: ~ n^2 / 2
+ */
 public class BubbleSort {
     public static <T extends Comparable<T>> void sort(T[] arr) {
         int n = arr.length;

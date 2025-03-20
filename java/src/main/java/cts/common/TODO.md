@@ -1,8 +1,8 @@
 ### sorting
 - [x] bubble sort
-- [ ] selection sort
-- [ ] insertion sort
-- [ ] shell sort
+- [x] selection sort
+- [x] insertion sort
+- [x] shell sort
 - [ ] merge sort
 - [x] quick sort
 - [ ] heap sort

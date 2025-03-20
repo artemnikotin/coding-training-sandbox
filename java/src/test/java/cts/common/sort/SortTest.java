@@ -28,6 +28,9 @@ public class SortTest {
     static Stream<Arguments> sortingAlgorithms() {
         return Stream.of(
                 Arguments.of("BubbleSort", (Consumer<Integer[]>) BubbleSort::sort),
+                Arguments.of("SelectionSort", (Consumer<Integer[]>) SelectionSort::sort),
+                Arguments.of("InsertionSort", (Consumer<Integer[]>) InsertionSort::sort),
+                Arguments.of("ShellSort", (Consumer<Integer[]>) ShellSort::sort),
                 Arguments.of("QuickSort", (Consumer<Integer[]>) QuickSort::sort)
         );
     }
@@ -57,7 +60,7 @@ public class SortTest {
             sortingAlgorithm.accept(toBeSorted);
             // Verify that the array is sorted
             assertTrue(Sort.isSorted(toBeSorted), () -> String.format(
-                    "Algorithm: %s, Input: %s, After: %s",
+                    "Algorithm: %s, Before: %s, After: %s",
                     algorithmName,
                     Arrays.toString(original),
                     Arrays.toString(toBeSorted)

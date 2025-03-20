@@ -1,6 +1,11 @@
 package cts.common.sort;
 
+import java.util.Random;
+
 public class Sort {
+
+    private static final Random rand = new Random();
+
     public static <T> void swap(T[] arr, int i, int j) {
         T temp = arr[i];
         arr[i] = arr[j];
@@ -19,4 +24,13 @@ public class Sort {
         }
         return true;
     }
+
+    public static void shuffle(Object[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n; i++) {
+            int r = rand.nextInt(i + 1);
+            swap(arr, i, r);
+        }
+    }
+
 }
