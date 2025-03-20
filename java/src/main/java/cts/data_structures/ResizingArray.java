@@ -1,17 +1,16 @@
 package cts.data_structures;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
-public class ResizingArray<Item> implements Iterable<Item> {
-    private Item[] items;  // Array to store elements
+public class ResizingArray<T> implements Iterable<T> {
+    private T[] items;  // Array to store elements
     private int size = 0;  // Number of elements in the array
     private int first = 0; // Index of the first element
     private int last = 0;  // Index of the last element
 
     // Constructor to initialize the array with a default capacity of 1
     public ResizingArray() {
-        items = (Item[]) new Object[1];
+        items = (T[]) new Object[1];
     }
 
     // Check if the array is empty
@@ -25,11 +24,7 @@ public class ResizingArray<Item> implements Iterable<Item> {
     }
 
     // Add an item to the beginning of the array
-    public void addFirst(Item item) {
-        if (item == null) {
-            throw new IllegalArgumentException("item must not be null");
-        }
-
+    public void addFirst(T item) {
         // Resize the array if it's full
         if (size == items.length) {
             resize(2 * items.length);
@@ -43,11 +38,7 @@ public class ResizingArray<Item> implements Iterable<Item> {
     }
 
     // Add an item to the end of the array
-    public void addLast(Item item) {
-        if (item == null) {
-            throw new IllegalArgumentException("item must not be null");
-        }
-
+    public void addLast(T item) {
         // Resize the array if it's full
         if (size == items.length) {
             resize(2 * items.length);
@@ -61,12 +52,12 @@ public class ResizingArray<Item> implements Iterable<Item> {
     }
 
     // Remove and return the first item in the array
-    public Item removeFirst() {
-        if (size == 0) {
-            throw new NoSuchElementException("Array is empty");
+    public T removeFirst() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Array is empty");
         }
 
-        Item item = items[first];
+        T item = items[first];
         items[first] = null;
         first++;
         if (first >= items.length) {
@@ -81,12 +72,12 @@ public class ResizingArray<Item> implements Iterable<Item> {
     }
 
     // Remove and return the last item in the array
-    public Item removeLast() {
-        if (size == 0) {
-            throw new NoSuchElementException("Array is empty");
+    public T removeLast() {
+        if (isEmpty()) {
+            throw new IllegalStateException("Array is empty");
         }
 
-        Item item = items[last];
+        T item = items[last];
         items[last] = null;
         last--;
         if (last < 0) {
@@ -101,29 +92,29 @@ public class ResizingArray<Item> implements Iterable<Item> {
     }
 
     // Get the item at the specified index
-    public Item get(int index) {
+    public T get(int index) {
         if (index < 0 || index >= size) {
-            throw new NoSuchElementException("Out of bound");
+            throw new IndexOutOfBoundsException("Index 10 out of bounds for length " + size);
         }
         return items[(first + index) % items.length];
     }
 
     // Set the item at the specified index
-    public void set(int index, Item item) {
+    public void set(int index, T item) {
         if (index < 0 || index >= size) {
-            throw new NoSuchElementException("Out of bound");
+            throw new IndexOutOfBoundsException("Index 10 out of bounds for length " + size);
         }
         items[(first + index) % items.length] = item;
     }
 
     // Return an iterator for the array
-    public Iterator<Item> iterator() {
+    public Iterator<T> iterator() {
         return new CyclicArrayIterator();
     }
 
     // Resize the array to the specified capacity
     private void resize(int capacity) {
-        Item[] copy = (Item[]) new Object[capacity];
+        T[] copy = (T[]) new Object[capacity];
         for (int i = 0; i < size; i++) {
             copy[i] = items[(first + i) % items.length];
         }
@@ -138,7 +129,7 @@ public class ResizingArray<Item> implements Iterable<Item> {
     }
 
     // Iterator implementation for the array
-    private class CyclicArrayIterator implements Iterator<Item> {
+    private class CyclicArrayIterator implements Iterator<T> {
         private int i = 0;
 
         public boolean hasNext() {
@@ -149,11 +140,11 @@ public class ResizingArray<Item> implements Iterable<Item> {
             throw new UnsupportedOperationException("Not supported");
         }
 
-        public Item next() {
+        public T next() {
             if (i >= size) {
-                throw new NoSuchElementException("Out of bound");
+                throw new IllegalStateException("Out of bound");
             }
-            Item item = items[(first + i) % items.length];
+            T item = items[(first + i) % items.length];
             i++;
             return item;
         }

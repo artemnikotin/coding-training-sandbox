@@ -3,8 +3,6 @@ package cts.data_structures;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.NoSuchElementException;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class ResizingArrayTest {
@@ -140,23 +138,23 @@ class ResizingArrayTest {
 
     @Test
     void testRemoveFirstOnEmptyArray() {
-        assertThrows(NoSuchElementException.class, () -> array.removeFirst());
+        assertThrows(IllegalStateException.class, () -> array.removeFirst());
     }
 
     @Test
     void testRemoveLastOnEmptyArray() {
-        assertThrows(NoSuchElementException.class, () -> array.removeLast());
+        assertThrows(IllegalStateException.class, () -> array.removeLast());
     }
 
     @Test
     void testGetOutOfBounds() {
         array.addFirst(1);
-        assertThrows(NoSuchElementException.class, () -> array.get(1));
+        assertThrows(IndexOutOfBoundsException.class, () -> array.get(1));
     }
 
     @Test
     void testSetOutOfBounds() {
         array.addFirst(1);
-        assertThrows(NoSuchElementException.class, () -> array.set(1, 2));
+        assertThrows(IndexOutOfBoundsException.class, () -> array.set(1, 2));
     }
 }

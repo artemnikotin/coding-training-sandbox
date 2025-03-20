@@ -1,5 +1,6 @@
 ### array
 - [x] dynamic array
+- [x] stack
 - [ ] heap
 
 ### trees
