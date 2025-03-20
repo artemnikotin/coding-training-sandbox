@@ -1,6 +1,5 @@
 # IntelliJ IDEA
 *.iml
-out/
 .idea/
 
 # VSCode
@@ -11,3 +10,5 @@ out/
 
 # Other
 algs4.jar
+node_modules/
+target/
