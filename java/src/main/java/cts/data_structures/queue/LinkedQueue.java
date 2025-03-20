@@ -1,5 +1,8 @@
 package cts.data_structures.queue;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class LinkedQueue<T> implements Queue<T> {
     private static class Node<T> {
         T data;
@@ -56,5 +59,27 @@ public class LinkedQueue<T> implements Queue<T> {
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            private Node<T> current = front;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("Out of bound");
+                }
+                T data = current.data;
+                current = current.next;
+                return data;
+            }
+        };
     }
 }

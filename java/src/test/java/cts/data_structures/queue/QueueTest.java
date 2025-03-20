@@ -3,6 +3,8 @@ package cts.data_structures.queue;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,6 +40,29 @@ public class QueueTest {
         assertFalse(queue.isEmpty());
         queue.dequeue();
         assertTrue(queue.isEmpty());
+    }
+
+    // Test the queue iterator
+    @ParameterizedTest
+    @MethodSource("queueProvider")
+    void testStackIterator(Queue<Integer> queue) {
+        queue.enqueue(10);
+        queue.enqueue(20);
+        queue.enqueue(30);
+
+        Iterator<Integer> iterator = queue.iterator();
+
+        // Verify the elements are returned in LIFO order
+        assertTrue(iterator.hasNext());
+        assertEquals(10, iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals(20, iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals(30, iterator.next());
+        assertFalse(iterator.hasNext());
+
+        // Verify NoSuchElementException is thrown when there are no more elements
+        assertThrows(NoSuchElementException.class, iterator::next);
     }
 
     // Test dequeue on empty queue

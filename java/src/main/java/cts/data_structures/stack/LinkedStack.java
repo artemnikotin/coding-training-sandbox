@@ -1,5 +1,8 @@
 package cts.data_structures.stack;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class LinkedStack<T> implements Stack<T> {
     private static class Node<T> {
         T data;
@@ -48,5 +51,27 @@ public class LinkedStack<T> implements Stack<T> {
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            private Node<T> current = top;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException("Out of bound");
+                }
+                T data = current.data;
+                current = current.next;
+                return data;
+            }
+        };
     }
 }

@@ -2,6 +2,8 @@ package cts.data_structures.queue;
 
 import cts.data_structures.ResizingArray;
 
+import java.util.Iterator;
+
 public class ArrayQueue<T> implements Queue<T> {
     private final ResizingArray<T> array;
 
@@ -38,5 +40,10 @@ public class ArrayQueue<T> implements Queue<T> {
     @Override
     public int size() {
         return array.size();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return array.iterator();
     }
 }

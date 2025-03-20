@@ -3,6 +3,8 @@ package cts.data_structures.stack;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -38,6 +40,29 @@ public class StackTest {
         assertFalse(stack.isEmpty());
         stack.pop();
         assertTrue(stack.isEmpty());
+    }
+
+    // Test the stack iterator
+    @ParameterizedTest
+    @MethodSource("stackProvider")
+    void testStackIterator(Stack<Integer> stack) {
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+
+        Iterator<Integer> iterator = stack.iterator();
+
+        // Verify the elements are returned in LIFO order
+        assertTrue(iterator.hasNext());
+        assertEquals(30, iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals(20, iterator.next());
+        assertTrue(iterator.hasNext());
+        assertEquals(10, iterator.next());
+        assertFalse(iterator.hasNext());
+
+        // Verify NoSuchElementException is thrown when there are no more elements
+        assertThrows(NoSuchElementException.class, iterator::next);
     }
 
     // Test pop on empty stack

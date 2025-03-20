@@ -2,6 +2,8 @@ package cts.data_structures.stack;
 
 import cts.data_structures.ResizingArray;
 
+import java.util.Iterator;
+
 public class ArrayStack<T> implements Stack<T> {
     private final ResizingArray<T> array;
 
@@ -11,7 +13,7 @@ public class ArrayStack<T> implements Stack<T> {
 
     @Override
     public void push(T item) {
-        array.addLast(item);
+        array.addFirst(item);
     }
 
     @Override
@@ -19,7 +21,7 @@ public class ArrayStack<T> implements Stack<T> {
         if (isEmpty()) {
             throw new IllegalStateException("Stack is empty");
         }
-        return array.removeLast();
+        return array.removeFirst();
     }
 
     @Override
@@ -38,5 +40,10 @@ public class ArrayStack<T> implements Stack<T> {
     @Override
     public int size() {
         return array.size();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return array.iterator();
     }
 }

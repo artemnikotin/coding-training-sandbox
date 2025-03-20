@@ -1,6 +1,7 @@
 package cts.data_structures;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ResizingArray<T> implements Iterable<T> {
     private T[] items;  // Array to store elements
@@ -142,7 +143,7 @@ public class ResizingArray<T> implements Iterable<T> {
 
         public T next() {
             if (i >= size) {
-                throw new IllegalStateException("Out of bound");
+                throw new NoSuchElementException("Out of bound");
             }
             T item = items[(first + i) % items.length];
             i++;
