@@ -1,5 +1,5 @@
 ### array
-- [ ] dynamic array
+- [x] dynamic array
 - [ ] heap
 
 ### trees
@@ -7,10 +7,10 @@
 - [ ] priority queue
 - [ ] tree set
 
-### assosiative array
+### associative array
 - [ ] separate chaining
 - [ ] linear probing
 
 ### math
 - [ ] Sparse Vector
-- [ ] Sparce Matrix
+- [ ] Sparse Matrix
