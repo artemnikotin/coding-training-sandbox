@@ -1,16 +1,17 @@
 package cts.common.sort;
 
 /**
- * Stable
- * Compares: n * log(n)
- * Array access: 6n * log(n)
+ * Recursive and non-recursive (iterative) MergeSort implementation.
+ * Stable, extra memory
  * Time Complexity: O(n * log(n))
  * Space Complexity: O(n)
+ * Compares: n * log(n)
+ * Array access: 6n * log(n)
  */
 public class MergeSort {
 
     /**
-     * Public method to initiate the merge sort process.
+     * Public method to initiate the recursive merge sort process.
      *
      * @param arr The array to be sorted.
      * @param <T> The type of elements in the array, which must implement Comparable.
@@ -18,8 +19,32 @@ public class MergeSort {
     public static <T extends Comparable<T>> void sort(T[] arr) {
         // Create an auxiliary array to be used during the merge process.
         T[] aux = (T[]) new Comparable[arr.length];
+
         // Start the recursive sort process.
         sort(arr, aux, 0, arr.length - 1);
+    }
+
+    /**
+     * Public method to initiate the iterative merge sort process using a bottom-up approach.
+     * But about 10% slower than recursive, top-down mergesort on typical systems.
+     *
+     * @param arr The array to be sorted.
+     * @param <T> The type of elements in the array, which must implement Comparable.
+     */
+    public static <T extends Comparable<T>> void sortIterative(T[] arr) {
+        int n = arr.length;
+        // Create an auxiliary array of the same size as the input array.
+        T[] aux = (T[]) new Comparable[n];
+
+        // Start with slice of size 1 and double the size in each iteration.
+        for (int size = 1; size < n; size *= 2) {
+            // Merge slices of the current size.
+            for (int lo = 0; lo < n - size; lo += 2 * size) {
+                int mid = lo + size - 1;
+                int hi = Math.min(lo + 2 * size - 1, n - 1);
+                merge(arr, aux, lo, mid, hi);
+            }
+        }
     }
 
     /**
