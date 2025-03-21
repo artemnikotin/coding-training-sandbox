@@ -3,7 +3,7 @@
 - [x] selection sort
 - [x] insertion sort
 - [x] shell sort
-- [ ] merge sort
+- [X] merge sort
 - [x] quick sort
 - [ ] heap sort
 

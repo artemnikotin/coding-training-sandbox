@@ -17,7 +17,11 @@ public class Sort {
     }
 
     public static <T extends Comparable<T>> boolean isSorted(T[] arr) {
-        for (int i = 1; i < arr.length; i++) {
+        return isSorted(arr, 0, arr.length - 1);
+    }
+
+    public static <T extends Comparable<T>> boolean isSorted(T[] arr, int lo, int hi) {
+        for (int i = lo + 1; i <= hi; i++) {
             if (less(arr[i], arr[i - 1])) {
                 return false;
             }

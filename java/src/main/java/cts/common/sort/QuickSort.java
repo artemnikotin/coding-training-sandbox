@@ -1,8 +1,5 @@
 package cts.common.sort;
 
-import static cts.common.sort.Sort.less;
-import static cts.common.sort.Sort.swap;
-
 public class QuickSort {
     public static <T extends Comparable<T>> void sort(T[] arr) {
         quickSort(arr, 0, arr.length - 1);
@@ -20,12 +17,12 @@ public class QuickSort {
         T pivot = array[high];
         int i = low;
         for (int j = low; j < high; j++) {
-            if (less(array[j], pivot)) {
-                swap(array, i++, j);
+            if (Sort.less(array[j], pivot)) {
+                Sort.swap(array, i++, j);
             }
         }
         // Swap pivot
-        swap(array, i, high);
+        Sort.swap(array, i, high);
         return i;
     }
 }

@@ -6,8 +6,11 @@ package cts.common.sort;
  */
 public class InsertionSort {
     public static <T extends Comparable<T>> void sort(T[] arr) {
-        int n = arr.length;
-        for (int i = 0; i < n; i++) {
+        sort(arr, 0, arr.length - 1);
+    }
+
+    public static <T extends Comparable<T>> void sort(T[] arr, int lo, int hi) {
+        for (int i = lo; i <= hi; i++) {
             for (int j = i; j > 0; j--) {
                 if (Sort.less(arr[j], arr[j - 1])) {
                     Sort.swap(arr, j, j - 1);

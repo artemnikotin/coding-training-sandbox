@@ -18,7 +18,7 @@ public class SortTest {
         return new Integer[][]{
                 {1, 2, 3, 4, 5}, // Already sorted
                 {5, 4, 3, 2, 1}, // Reverse sorted
-                {3, 1, 4, 1, 5, 9, 2, 6, 5}, // Random
+                {3, 16, 4, 1, 15, 9, 2, 6, 5, 1, 12, 10, 11, 0, 13, 14, 5}, // Random
                 {}, // Empty array
                 {1} // Single element
         };
@@ -31,6 +31,8 @@ public class SortTest {
                 Arguments.of("SelectionSort", (Consumer<Integer[]>) SelectionSort::sort),
                 Arguments.of("InsertionSort", (Consumer<Integer[]>) InsertionSort::sort),
                 Arguments.of("ShellSort", (Consumer<Integer[]>) ShellSort::sort),
+                Arguments.of("MergeSort", (Consumer<Integer[]>) MergeSort::sort),
+                Arguments.of("MergeSortOptimized", (Consumer<Integer[]>) MergeSortOptimized::sort),
                 Arguments.of("QuickSort", (Consumer<Integer[]>) QuickSort::sort)
         );
     }
