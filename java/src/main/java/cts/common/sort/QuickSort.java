@@ -22,7 +22,8 @@ public class QuickSort {
      * @param <T> The type of elements in the array, which must implement Comparable.
      */
     public static <T extends Comparable<T>> void sort(T[] arr) {
-        quickSort(arr, 0, arr.length - 1);
+        Sort.shuffle(arr);
+        sort(arr, 0, arr.length - 1);
     }
 
     /**
@@ -33,15 +34,15 @@ public class QuickSort {
      * @param high  The ending index of the slice.
      * @param <T>   The type of elements in the array, which must implement Comparable.
      */
-    private static <T extends Comparable<T>> void quickSort(T[] array, int low, int high) {
+    private static <T extends Comparable<T>> void sort(T[] array, int low, int high) {
         // Base case: If the slice has one or zero elements, it is already sorted.
         if (low < high) {
             // Partition the array and get the pivot index.
             int pivotIndex = partition(array, low, high);
             // Recursively sort the left slice (elements less than the pivot).
-            quickSort(array, low, pivotIndex - 1);
+            sort(array, low, pivotIndex - 1);
             // Recursively sort the right slice (elements greater than the pivot).
-            quickSort(array, pivotIndex + 1, high);
+            sort(array, pivotIndex + 1, high);
         }
     }
 

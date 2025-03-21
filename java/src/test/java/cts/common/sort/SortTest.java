@@ -21,7 +21,13 @@ public class SortTest {
         return new Integer[][]{
                 {1, 2, 3, 4, 5}, // Already sorted
                 {5, 4, 3, 2, 1}, // Reverse sorted
-                {3, 16, 4, 1, 15, 9, 2, 6, 5, 1, 12, 10, 11, 0, 13, 14, 5}, // Random
+                {
+                        -3, -6, -4, -7, -1, -9, -2, -6, -5, -1, -2, -3, -4, -5, -6, -7, -5, -8, -9,
+                        3, 16, 4, 17, 15, 9, 2, 6, 5, 1, 12, 10, 11, 0, 13, 14, 5, 20, 19, 85, 69,
+                        3, 16, 4, 17, 15, 9, 2, 6, 5, 1, 12, 10, 11, 0, 13, 14, 5, 20, 18, 78, 54,
+                        -3, -6, -4, -7, -1, -9, -2, -6, -5, -1, -2, -3, -4, -5, -6, -7, -5, -8, -9,
+                        3, 16, 4, 17, 15, 9, 2, 6, 5, 1, 12, 10, 11, 0, 13, 14, 5, 20, 18, 78, 54,
+                }, // Random
                 {}, // Empty array
                 {1} // Single element
         };
@@ -45,7 +51,8 @@ public class SortTest {
                 Arguments.of("MergeSort", (Consumer<Integer[]>) MergeSort::sort),
                 Arguments.of("MergeSort(iterative)", (Consumer<Integer[]>) MergeSort::sortIterative),
                 Arguments.of("MergeSort(optimized)", (Consumer<Integer[]>) MergeSortOptimized::sort),
-                Arguments.of("QuickSort", (Consumer<Integer[]>) QuickSort::sort)
+                Arguments.of("QuickSort", (Consumer<Integer[]>) QuickSort::sort),
+                Arguments.of("QuickSort(optimized)", (Consumer<Integer[]>) QuickSortOptimized::sort)
         );
     }
 
@@ -53,7 +60,8 @@ public class SortTest {
     static Stream<Arguments> sortingComparatorAlgorithms() {
         return Stream.of(
                 Arguments.of("InsertionSort", (BiConsumer<Integer[], Comparator<Integer>>) InsertionSort::sort),
-                Arguments.of("MergeSort(optimized)", (BiConsumer<Integer[], Comparator<Integer>>) MergeSortOptimized::sort)
+                Arguments.of("MergeSort(optimized)", (BiConsumer<Integer[], Comparator<Integer>>) MergeSortOptimized::sort),
+                Arguments.of("QuickSort(optimized)", (BiConsumer<Integer[], Comparator<Integer>>) QuickSortOptimized::sort)
         );
     }
 
@@ -61,7 +69,8 @@ public class SortTest {
     static Stream<Arguments> sortingRangeAlgorithms() {
         return Stream.of(
                 Arguments.of("InsertionSort", (RangeSort) InsertionSort::sort),
-                Arguments.of("MergeSort(optimized)", (RangeSort) MergeSortOptimized::sort)
+                Arguments.of("MergeSort(optimized)", (RangeSort) MergeSortOptimized::sort),
+                Arguments.of("QuickSort(optimized)", (RangeSort) QuickSortOptimized::sort)
         );
     }
 

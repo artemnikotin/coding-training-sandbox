@@ -2,6 +2,7 @@
 - [x] dynamic array
 - [x] stack
 - [ ] heap
+- [ ] selection
 
 ### trees
 - [ ] bst
