@@ -2,11 +2,15 @@ package cts.common.sort;
 
 /**
  * Recursive and non-recursive (iterative) MergeSort implementation.
- * Stable, extra memory
- * Time Complexity: O(n * log(n))
- * Space Complexity: O(n)
- * Compares: n * log(n)
- * Array access: 6n * log(n)
+ * MergeSort is a stable, efficient, and comparison-based sorting algorithm that uses a divide-and-conquer approach.
+ * It works by recursively dividing the array into two halves, sorting each half, and then merging the two sorted halves.
+ * Characteristics:
+ * - not stable
+ * - extra memory
+ * Time Complexity:
+ * - Best/Average/Worst Case Compares: O(n log n)
+ * - Array access: 6n * log(n)
+ * Space Complexity: O(n) (due to the auxiliary array used for merging)
  */
 public class MergeSort {
 

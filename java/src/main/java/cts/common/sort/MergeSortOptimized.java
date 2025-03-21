@@ -9,6 +9,7 @@ import java.util.Comparator;
  * - uses insertion sort for small slices, as mergesort has too much overhead for tiny arrays.
  * Time Complexity: O(n * log(n))
  * Space Complexity: O(n) (due to the auxiliary array)
+ * TODO fix creating full array copy for range sorting
  */
 public class MergeSortOptimized {
 
