@@ -1,10 +1,10 @@
 {
   "name": "coding-traning-sandbox",
   "version": "0.0.1",
-  "description": "Package contains solutions to programming problems from popular coding courses and learning platforms.",
+  "description": "Package contains algorithms, data structures and solutions to programming problems from popular coding courses and learning platforms.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "vitest"
   },
   "repository": {
     "type": "git",
@@ -12,6 +12,7 @@
   },
   "keywords": [
     "javascript",
+    "typescript",
     "algorithm",
     "data-structure",
     "traning",
@@ -22,5 +23,9 @@
   "bugs": {
     "url": "https://github.com/artemnikotin/coding-training-sandbox/issues"
   },
-  "homepage": "https://github.com/artemnikotin/coding-training-sandbox#readme"
+  "homepage": "https://github.com/artemnikotin/coding-training-sandbox#readme",
+  "devDependencies": {
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.9"
+  }
 }
