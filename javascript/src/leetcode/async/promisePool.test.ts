@@ -19,7 +19,10 @@ async function simulateTimer() {
   await vi.advanceTimersByTimeAsync(400);
 }
 
-describe('Leetcode | Promise Pool problem', () => {
+describe.each([
+  ['promisePool', promisePool],
+  ['promisePoolAlternate', promisePoolAlternate],
+])('Leetcode | %s', (_, promisePool) => {
   beforeEach(() => {
     vi.useFakeTimers();
     vi.resetAllMocks();
@@ -28,19 +31,8 @@ describe('Leetcode | Promise Pool problem', () => {
     vi.useRealTimers();
   });
 
-  test('promisePool async', async () => {
+  test('Promise Pool', async () => {
     const done = promisePool(functions, 3);
-
-    await simulateTimer();
-
-    await done;
-    fn(7);
-
-    expect(fn.mock.calls).toEqual([[2], [3], [5], [6], [4], [1], [7]]);
-  });
-
-  test('promisePoolAlternate async', async () => {
-    const done = promisePoolAlternate(functions, 3);
 
     await simulateTimer();
 

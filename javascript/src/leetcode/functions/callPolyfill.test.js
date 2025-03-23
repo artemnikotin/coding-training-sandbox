@@ -2,7 +2,6 @@ import { expect, test } from 'vitest';
 import './callPolyfill';
 
 const fn = function() {
-  console.log(this);
   return this?.value;
 }
 
