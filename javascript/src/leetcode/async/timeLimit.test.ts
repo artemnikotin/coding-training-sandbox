@@ -29,11 +29,11 @@ describe.each([
       reject(new Error('Function'));
     }, 100, n * 2));
     const wrappedFn = limitFn(double, 1000);
-    await expect((async () => {
+    await expect(async () => {
       const promise = wrappedFn(2);
       vi.advanceTimersByTimeAsync(100);
       return promise;
-    })()).rejects.toThrowError('Function');
+    }).rejects.toThrowError('Function');
   });
 
   test('the function reject after time limit', async () => {
@@ -41,21 +41,21 @@ describe.each([
       reject(new Error('function'));
     }, 1000, n * 2));
     const wrappedFn = limitFn(double, 100);
-    await expect((async () => {
+    await expect(async () => {
       const promise = wrappedFn(2);
       vi.advanceTimersByTimeAsync(100);
       return promise;
-    })()).rejects.toThrowError('Limit');
+    }).rejects.toThrowError('Limit');
   });
 
   test('the function resolve after time limit', async () => {
     const double = async (n: number) => new Promise(resolve => setTimeout(resolve, 1000, n * 2));
     const wrappedFn = limitFn(double, 100);
 
-    await expect((async () => {
+    await expect(async () => {
       const promise = wrappedFn(2);
       vi.advanceTimersByTimeAsync(1000);
       return promise;
-    })()).rejects.toThrowError('Limit');
+    }).rejects.toThrowError('Limit');
   });
 })
