@@ -1,5 +1,5 @@
 /**
- * Leetcode | 2636. Promise Pool
+ * Leetcode | Medium | 2636. Promise Pool
  * The goal is to execute a pool of asynchronous functions (functions) with a concurrency limit (n).
  * This means that at most n functions can run simultaneously. Once one function completes, the next function in the queue should start,
  * ensuring that the concurrency limit is always respected.

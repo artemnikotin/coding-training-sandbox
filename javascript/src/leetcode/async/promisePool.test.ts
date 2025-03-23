@@ -19,7 +19,7 @@ async function simulateTimer() {
   await vi.advanceTimersByTimeAsync(400);
 }
 
-describe('test', () => {
+describe('Leetcode | Promise Pool problem', () => {
   beforeEach(() => {
     vi.useFakeTimers();
     vi.resetAllMocks();

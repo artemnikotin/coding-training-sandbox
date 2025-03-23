@@ -1,5 +1,5 @@
 /**
- * Leetcode | 2633. Convert Object to JSON String
+ * Leetcode | Medium | 2633. Convert Object to JSON String
  * Converts a JavaScript object, array, or primitive value into a JSON string.
  * This function mimics the behavior of `JSON.stringify` but is implemented manually.
  *

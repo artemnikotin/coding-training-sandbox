@@ -1,5 +1,5 @@
 /**
- * Leetcode | 2693. Call Function with Custom Context
+ * Leetcode | Medium | 2693. Call Function with Custom Context
  * Please solve this without using the built-in Function.call method.
  * 
  * @param {Object} context - The context (`this` value) to bind the function to.

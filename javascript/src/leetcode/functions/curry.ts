@@ -1,5 +1,5 @@
 /**
- * Leetcode | 2632. Curry
+ * Leetcode | Medium | 2632. Curry
  * Curries a given function, allowing it to be called with arguments one at a time.
  * The curry function is a higher-order function that transforms a given function into its curried version.
  * Currying is a functional programming technique where a function that takes multiple arguments is
