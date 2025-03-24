@@ -59,6 +59,7 @@ public class MergeSortOptimized {
      * @param comparator The comparator to determine the order of elements.
      * @param <T>        The type of elements in the array.
      */
+    @SuppressWarnings("unchecked")
     public static <T> void sort(T[] arr, int lo, int hi, Comparator<T> comparator) {
         if (hi - lo + 1 <= 1) {
             return;

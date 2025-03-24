@@ -10,6 +10,7 @@ public class ResizingArray<T> implements Iterable<T> {
     private int last = 0;  // Index of the last element
 
     // Constructor to initialize the array with a default capacity of 1
+    @SuppressWarnings("unchecked")
     public ResizingArray() {
         items = (T[]) new Object[1];
     }
@@ -95,7 +96,7 @@ public class ResizingArray<T> implements Iterable<T> {
     // Get the item at the specified index
     public T get(int index) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index 10 out of bounds for length " + size);
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
         }
         return items[(first + index) % items.length];
     }
@@ -103,7 +104,7 @@ public class ResizingArray<T> implements Iterable<T> {
     // Set the item at the specified index
     public void set(int index, T item) {
         if (index < 0 || index >= size) {
-            throw new IndexOutOfBoundsException("Index 10 out of bounds for length " + size);
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
         }
         items[(first + index) % items.length] = item;
     }
@@ -114,6 +115,7 @@ public class ResizingArray<T> implements Iterable<T> {
     }
 
     // Resize the array to the specified capacity
+    @SuppressWarnings("unchecked")
     private void resize(int capacity) {
         T[] copy = (T[]) new Object[capacity];
         for (int i = 0; i < size; i++) {

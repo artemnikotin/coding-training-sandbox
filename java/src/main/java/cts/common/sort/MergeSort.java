@@ -12,6 +12,7 @@ package cts.common.sort;
  * - Array access: 6n * log(n)
  * Space Complexity: O(n) (due to the auxiliary array used for merging)
  */
+@SuppressWarnings("unchecked")
 public class MergeSort {
 
     /**
