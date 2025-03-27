@@ -101,6 +101,7 @@ class ResizingArrayTest {
 
     @Test
     void testCapacity() {
+        array = new ResizingArray<>(1);
         array.addLast(1);
         assertEquals(1, array.capacity());
 

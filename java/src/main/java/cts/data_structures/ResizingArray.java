@@ -4,15 +4,25 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 
 public class ResizingArray<T> implements Iterable<T> {
+    private static final int DEFAULT_INITIAL_CAPACITY = 8;
+
     private T[] items;  // Array to store elements
     private int size = 0;  // Number of elements in the array
     private int first = 0; // Index of the first element
-    private int last = 0;  // Index of the last element
+    private int last = -1;  // Index of the last element
 
-    // Constructor to initialize the array with a default capacity of 1
-    @SuppressWarnings("unchecked")
+    // Constructor to initialize the array with a default capacity
     public ResizingArray() {
-        items = (T[]) new Object[1];
+        this(DEFAULT_INITIAL_CAPACITY);
+    }
+
+    // Constructor to initialize the array with passed capacity
+    @SuppressWarnings("unchecked")
+    public ResizingArray(int initialCapacity) {
+        if (initialCapacity < 1) {
+            throw new IllegalArgumentException("Capacity must be greater than zero");
+        }
+        items = (T[]) new Object[initialCapacity];
     }
 
     // Check if the array is empty
@@ -87,7 +97,7 @@ public class ResizingArray<T> implements Iterable<T> {
         }
         size--;
         // Resize the array if it's only 25% full
-        if (size > 0 && size == items.length / 4) {
+        if (size > DEFAULT_INITIAL_CAPACITY && size == items.length / 4) {
             resize(items.length / 2);
         }
         return item;
