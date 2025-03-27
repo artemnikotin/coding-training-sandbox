@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 
 /**
- * A priority queue implementation using a binary heap with a resizing array.
+ * A max priority queue implementation using a binary heap with a resizing array.
  * The priority order is determined by the provided Comparator.
  *
  * @param <T> the type of elements in this priority queue
@@ -175,7 +175,7 @@ public class PriorityQueue<T> implements Queue<T> {
         int half = size() / 2;  // Only need to sink non-leaf nodes
         while (current < half) {
             int left = (2 * current) + 1;  // Left child index
-            int right = left + 1;           // Right child index
+            int right = left + 1;          // Right child index
             // Choose the child with higher priority
             if (right < size() && less(left, right)) {
                 left = right;
@@ -203,7 +203,7 @@ public class PriorityQueue<T> implements Queue<T> {
      * Compares two elements at the given indices.
      * @param i first element index
      * @param j second element index
-     * @return true if element at i has higher priority than element at j
+     * @return true if element at i has lower priority than element at j
      */
     private boolean less(int i, int j) {
         return this.comparator.compare(items.get(i), items.get(j)) < 0;
