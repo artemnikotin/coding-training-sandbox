@@ -52,7 +52,8 @@ public class SortTest {
                 Arguments.of("MergeSort(iterative)", (Consumer<Integer[]>) MergeSort::sortIterative),
                 Arguments.of("MergeSort(optimized)", (Consumer<Integer[]>) MergeSortOptimized::sort),
                 Arguments.of("QuickSort", (Consumer<Integer[]>) QuickSort::sort),
-                Arguments.of("QuickSort(optimized)", (Consumer<Integer[]>) QuickSortOptimized::sort)
+                Arguments.of("QuickSort(optimized)", (Consumer<Integer[]>) QuickSortOptimized::sort),
+                Arguments.of("HeapSort", (Consumer<Integer[]>) HeapSort::sort)
         );
     }
 
@@ -61,7 +62,8 @@ public class SortTest {
         return Stream.of(
                 Arguments.of("InsertionSort", (BiConsumer<Integer[], Comparator<Integer>>) InsertionSort::sort),
                 Arguments.of("MergeSort(optimized)", (BiConsumer<Integer[], Comparator<Integer>>) MergeSortOptimized::sort),
-                Arguments.of("QuickSort(optimized)", (BiConsumer<Integer[], Comparator<Integer>>) QuickSortOptimized::sort)
+                Arguments.of("QuickSort(optimized)", (BiConsumer<Integer[], Comparator<Integer>>) QuickSortOptimized::sort),
+                Arguments.of("HeapSort", (BiConsumer<Integer[], Comparator<Integer>>) HeapSort::sort)
         );
     }
 
@@ -70,7 +72,8 @@ public class SortTest {
         return Stream.of(
                 Arguments.of("InsertionSort", (RangeSort) InsertionSort::sort),
                 Arguments.of("MergeSort(optimized)", (RangeSort) MergeSortOptimized::sort),
-                Arguments.of("QuickSort(optimized)", (RangeSort) QuickSortOptimized::sort)
+                Arguments.of("QuickSort(optimized)", (RangeSort) QuickSortOptimized::sort),
+                Arguments.of("HeapSort", (RangeSort) HeapSort::sort)
         );
     }
 
