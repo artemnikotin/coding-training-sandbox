@@ -12,3 +12,4 @@
 algs4.jar
 node_modules/
 target/
+.vite/
