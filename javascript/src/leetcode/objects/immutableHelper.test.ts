@@ -2,8 +2,20 @@ import { beforeEach, describe, expect, test } from "vitest";
 
 import { ImmutableHelper } from "./immutableHelper";
 
-let originalObject;
-let originalHelper;
+type OriginalObject = {
+  val: number,
+  arr: number[],
+  obj: {
+    val: {
+      x: number,
+      y: number,
+    }
+  }
+  newVal?: number,
+}
+
+let originalObject: OriginalObject;
+let originalHelper: ImmutableHelper<OriginalObject>;
 
 describe("Leetcode | 2691. Immutability Helper", () => {
   beforeEach(() => {
@@ -29,7 +41,7 @@ describe("Leetcode | 2691. Immutability Helper", () => {
   test("in-object array mutation", () => {
     const cloneObject = structuredClone(originalObject);
 
-    const mutator = (proxy => {
+    const mutator = ((proxy: OriginalObject) => {
       proxy.arr[0] = 5;
       proxy.newVal = proxy.arr[0] + proxy.arr[1];
     });
@@ -45,7 +57,7 @@ describe("Leetcode | 2691. Immutability Helper", () => {
   test("nested object mutation", () => {
     const cloneObject = structuredClone(originalObject);
 
-    const mutator = (proxy => {
+    const mutator = ((proxy: OriginalObject) => {
       let data = proxy.obj.val;
       let temp = data.x;
       data.x = data.y;
