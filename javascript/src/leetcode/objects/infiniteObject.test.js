@@ -13,4 +13,4 @@ describe("Leetcode | 2690. Infinite Method Object", () => {
   test("call with invalid method name", () => {
     expect(obj[".-qw73n|^2It"]()).toBe(".-qw73n|^2It");
   });
-})
+});

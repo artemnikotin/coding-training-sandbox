@@ -3,7 +3,7 @@ import { Trie } from "./trie";
 
 let trie: Trie;
 
-describe('Trie', () => {
+describe('Common/String | Trie', () => {
   beforeEach(() => {
     trie = new Trie();
   });

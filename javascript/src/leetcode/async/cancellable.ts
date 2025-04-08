@@ -1,5 +1,5 @@
 /**
- * Leetcode | 2650. Design Cancellable Function
+ * Leetcode | Hard | 2650. Design Cancellable Function
  * 
  * Creates a cancellable generator function that wraps an asynchronous generator.
  * 

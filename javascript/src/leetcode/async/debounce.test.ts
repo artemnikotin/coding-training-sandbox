@@ -3,7 +3,7 @@ import { debounce } from "./debounce";
 
 const fn = vi.fn();
 
-describe('Leetcode | Debounce problem', () => {
+describe('Leetcode | 2627. Debounce', () => {
   beforeEach(() => {
     vi.useFakeTimers();
     vi.resetAllMocks();

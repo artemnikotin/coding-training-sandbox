@@ -22,7 +22,7 @@ async function simulateTimer() {
 describe.each([
   ['promisePool', promisePool],
   ['promisePoolAlternate', promisePoolAlternate],
-])('Leetcode | %s', (_, promisePool) => {
+])('Leetcode | 2636. Promise Pool | %s', (_, promisePool) => {
   beforeEach(() => {
     vi.useFakeTimers();
     vi.resetAllMocks();

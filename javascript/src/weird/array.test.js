@@ -1,6 +1,6 @@
 import {test, expect, describe} from 'vitest';
 
-describe('array weird behaviour', () => {
+describe('Weired/Array', () => {
   test('filer on empty array', () => {
     const arr = new Array(10);
     expect(arr.filter(() => true).length).toBe(0); // WTF?

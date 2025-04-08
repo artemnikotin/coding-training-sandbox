@@ -1,5 +1,5 @@
 /**
- * Leetcode | 2700. Differences Between Two Objects
+ * Leetcode | Medium | 2700. Differences Between Two Objects
  * 
  * This function compares two objects and returns their differences.
  * It recursively compares nested objects and only returns paths where values differ.

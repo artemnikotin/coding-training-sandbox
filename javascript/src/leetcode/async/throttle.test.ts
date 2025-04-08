@@ -3,7 +3,7 @@ import { throttle } from "./throttle";
 
 const fn = vi.fn();
 
-describe('Leetcode | Debounce problem', () => {
+describe('Leetcode | 2676. Throttle', () => {
   beforeEach(() => {
     vi.useFakeTimers();
     vi.resetAllMocks();

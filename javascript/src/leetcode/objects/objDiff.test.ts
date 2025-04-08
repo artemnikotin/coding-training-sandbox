@@ -2,7 +2,7 @@ import { describe, expect, test } from "vitest";
 
 import { objDiff } from "./objDiff";
 
-describe("2700. Differences Between Two Objects", () => {
+describe("Leetcode | 2700. Differences Between Two Objects", () => {
   test("add new keys", () => {
     const obj1 = {};
     const obj2 = {

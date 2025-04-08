@@ -5,7 +5,7 @@ describe.each([
   ['timeLimit', timeLimit],
   ['timeLimitNoRace', timeLimitNoRace],
 ]
-)('Leetcode | %s', (_, limitFn) => {
+)('Leetcode | 2637. Promise Time Limit | %s', (_, limitFn) => {
   beforeEach(() => {
     vi.useFakeTimers();
   });

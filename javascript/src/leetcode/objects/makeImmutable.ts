@@ -1,5 +1,5 @@
 /**
- * Leetcode | 2692. Make Object Immutable
+ * Leetcode | Medium | 2692. Make Object Immutable
  * 
  * This function takes an object and returns an immutable version of it.
  * Any attempts to modify the object or its nested properties will throw an error.

@@ -4,7 +4,7 @@ import { memoizeMap, memoizeTrie } from './memoize-ii';
 describe.each([
   ['memoizeTrie', memoizeTrie],
   ['memoizeMap', memoizeMap],
-])('Leetcode | memoize-ii | %s', (_, memoize) => {
+])('Leetcode | 2630. Memoize II | %s', (_, memoize) => {
   test('memoize no arguments functions', () => {
     const fn1 = vi.fn(() => 5);
     const fn2 = vi.fn(() => 6);

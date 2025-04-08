@@ -1,5 +1,5 @@
 /**
- * Leetcode | 2691. Immutability Helper
+ * Leetcode | Hard | 2691. Immutability Helper
  */
 
 type ProxyState = {

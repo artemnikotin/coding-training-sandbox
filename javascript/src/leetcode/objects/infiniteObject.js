@@ -1,5 +1,5 @@
 /**
- * Leetcode | 2690. Infinite Method Object
+ * Leetcode | Easy | 2690. Infinite Method Object
  * 
  * Creates an infinite object that dynamically handles any method call by returning the method name as a string.
  * 

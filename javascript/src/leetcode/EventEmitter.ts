@@ -4,7 +4,7 @@ type Subscription = {
 }
 
 /**
- * Leetcode | 2694. Event Emitter
+ * Leetcode | Medium | 2694. Event Emitter
  * The EventEmitter should allow for subscribing to events and emitting them.
  */
 export class EventEmitter {
