@@ -1,3 +1,7 @@
+// Define types for JSON-compatible values and objects
+type JSONValue = null | boolean | number | string | JSONValue[] | { [key: string]: JSONValue };
+type Input = Record<string, JSONValue> | Array<JSONValue>;
+
 /**
  * Leetcode | Medium | 2692. Make Object Immutable
  * 
@@ -7,7 +11,7 @@
  * @param obj The object to make immutable
  * @returns An immutable proxy of the original object
  */
-export function makeImmutable<T extends object>(obj: T): T {
+export function makeImmutable<T extends Input>(obj: T): T {
   // List of array methods that mutate the array
   const mutatingMethods = new Set([
     'pop',
