@@ -8,7 +8,7 @@ type PendingQuery = {
 };
 
 /**
- * Leetcode | 2756. Query Batching
+ * Leetcode | Hard | 2756. Query Batching
  * QueryBatcher - A class that batches individual queries into bulk requests
  * to optimize calls by combining multiple requests into a single batch.
  * 
