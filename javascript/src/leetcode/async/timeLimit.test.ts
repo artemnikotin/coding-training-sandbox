@@ -31,7 +31,7 @@ describe.each([
     const wrappedFn = limitFn(double, 1000);
     await expect(async () => {
       const promise = wrappedFn(2);
-      vi.advanceTimersByTimeAsync(100);
+      vi.advanceTimersByTime(100);
       return promise;
     }).rejects.toThrowError('Function');
   });
@@ -43,7 +43,7 @@ describe.each([
     const wrappedFn = limitFn(double, 100);
     await expect(async () => {
       const promise = wrappedFn(2);
-      vi.advanceTimersByTimeAsync(100);
+      vi.advanceTimersByTime(100);
       return promise;
     }).rejects.toThrowError('Limit');
   });
@@ -54,7 +54,7 @@ describe.each([
 
     await expect(async () => {
       const promise = wrappedFn(2);
-      vi.advanceTimersByTimeAsync(1000);
+      vi.advanceTimersByTime(1000);
       return promise;
     }).rejects.toThrowError('Limit');
   });
