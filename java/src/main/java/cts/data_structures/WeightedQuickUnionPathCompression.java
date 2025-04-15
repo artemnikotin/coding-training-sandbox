@@ -1,15 +1,15 @@
 package cts.data_structures;
 
 public class WeightedQuickUnionPathCompression {
-    private int[] parent;
-    private int[] size; // To keep track of the size of each tree
+    private final int[] parents;
+    private final int[] size; // To keep track of the size of each tree
 
     // Constructor to initialize the parent and size arrays
     public WeightedQuickUnionPathCompression(int n) {
-        parent = new int[n];
+        parents = new int[n];
         size = new int[n];
         for (int i = 0; i < n; i++) {
-            parent[i] = i; // Each element is its own parent initially
+            parents[i] = i; // Each element is its own parent initially
             size[i] = 1; // Each tree has a size of 1 initially
         }
     }
@@ -26,10 +26,10 @@ public class WeightedQuickUnionPathCompression {
 
         // Attach the smaller tree to the larger tree
         if (size[rootP] < size[rootQ]) {
-            parent[rootP] = rootQ;
+            parents[rootP] = rootQ;
             size[rootQ] += size[rootP]; // Update the size of the larger tree
         } else {
-            parent[rootQ] = rootP;
+            parents[rootQ] = rootP;
             size[rootP] += size[rootQ]; // Update the size of the larger tree
         }
     }
@@ -41,9 +41,9 @@ public class WeightedQuickUnionPathCompression {
 
     // Find the root of the element with path compression
     private int find(int p) {
-        while (p != parent[p]) {
-            parent[p] = parent[parent[p]]; // Path compression
-            p = parent[p];
+        while (p != parents[p]) {
+            parents[p] = parents[parents[p]]; // Path compression
+            p = parents[p];
         }
         return p;
     }

@@ -1,15 +1,17 @@
 ### array
 - [x] dynamic array
 - [x] stack
-- [ ] heap
+- [x] heap
 - [ ] selection
 
 ### trees
+- [x] priority queue
 - [ ] bst
-- [ ] priority queue
 - [ ] tree set
 
 ### associative array
+- [x] linked list associative array
+- [x] ordered array associative array
 - [ ] separate chaining
 - [ ] linear probing
 

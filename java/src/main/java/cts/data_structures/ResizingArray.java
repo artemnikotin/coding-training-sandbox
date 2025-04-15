@@ -108,7 +108,7 @@ public class ResizingArray<T> implements Iterable<T> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
         }
-        return items[(first + index) % items.length];
+        return items[index(index)];
     }
 
     // Set the item at the specified index
@@ -116,7 +116,31 @@ public class ResizingArray<T> implements Iterable<T> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
         }
-        items[(first + index) % items.length] = item;
+        items[index(index)] = item;
+    }
+
+    // Insert the item at the specified index
+    public void insert(int index, T item) {
+        if (index < 0 || index > size) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
+        }
+        addLast(null);
+        for (int i = size() - 1; i > index; i--) {
+            items[index(i)] = items[index(i - 1)];
+        }
+        items[index(index)] = item;
+    }
+
+    public T remove(int index) {
+        if (index < 0 || index >= size) {
+            throw new IndexOutOfBoundsException("Index " + index + " out of bounds for length " + size);
+        }
+        T item = get(index);
+        for (; index < size() - 1; index++) {
+            items[index(index)] = items[index(index + 1)];
+        }
+        removeLast();
+        return item;
     }
 
     // Return an iterator for the array
@@ -124,21 +148,26 @@ public class ResizingArray<T> implements Iterable<T> {
         return new CyclicArrayIterator();
     }
 
+    // Return the current capacity of the array
+    public int capacity() {
+        return items.length;
+    }
+
     // Resize the array to the specified capacity
     @SuppressWarnings("unchecked")
     private void resize(int capacity) {
         T[] copy = (T[]) new Object[capacity];
         for (int i = 0; i < size; i++) {
-            copy[i] = items[(first + i) % items.length];
+            copy[i] = items[index(i)];
         }
         items = copy;
         first = 0;
         last = size - 1;
     }
 
-    // Return the current capacity of the array
-    public int capacity() {
-        return items.length;
+    // Real array index
+    private int index(int i) {
+        return (first + i) % items.length;
     }
 
     // Iterator implementation for the array
@@ -157,7 +186,7 @@ public class ResizingArray<T> implements Iterable<T> {
             if (i >= size) {
                 throw new NoSuchElementException("Out of bound");
             }
-            T item = items[(first + i) % items.length];
+            T item = items[index(i)];
             i++;
             return item;
         }

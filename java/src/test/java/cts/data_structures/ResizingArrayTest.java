@@ -86,6 +86,31 @@ class ResizingArrayTest {
     }
 
     @Test
+    void testInsert() {
+        array.addFirst(1);
+        array.addLast(2);
+        array.insert(1, 5);
+        array.insert(0, 6);
+        array.insert(4, 10);
+        assertEquals(6, array.get(0));
+        assertEquals(5, array.get(2));
+        assertEquals(10, array.get(4));
+    }
+
+    @Test
+    void testRemove() {
+        array.addFirst(1);
+        array.addLast(2);
+        array.addLast(3);
+        array.addLast(4);
+        assertEquals(1, array.remove(0));
+        assertEquals(2, array.get(0));
+
+        assertEquals(4, array.remove(2));
+        assertEquals(3, array.get(1));
+    }
+
+    @Test
     void testResize() {
         // Add elements to trigger resizing
         for (int i = 0; i < 10; i++) {
