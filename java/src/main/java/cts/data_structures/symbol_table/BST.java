@@ -5,7 +5,6 @@ import cts.data_structures.queue.ArrayQueue;
 
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, Value> {
@@ -78,18 +77,14 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
     public int size(Key lo, Key hi) {
         Objects.requireNonNull(lo, "First key cannot be null");
         Objects.requireNonNull(hi, "Second key cannot be null");
-        AtomicInteger runCount = new AtomicInteger(0);
-        inorder(root, lo, hi, _ -> runCount.incrementAndGet());
-        return runCount.get();
-    }
-
-    @Override
-    public Iterable<Key> keys(Key lo, Key hi) {
-        Objects.requireNonNull(lo, "First key cannot be null");
-        Objects.requireNonNull(hi, "Second key cannot be null");
-        Queue<Key> q = new ArrayQueue<>();
-        inorder(root, lo, hi, q::enqueue);
-        return q;
+        if (lo.compareTo(hi) > 0) {
+            return 0;
+        }
+        if (contains(hi)) {
+            return rank(hi) - rank(lo) + 1;
+        } else {
+            return rank(hi) - rank(lo);
+        }
     }
 
     @Override
@@ -139,8 +134,15 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
 
     @Override
     public Iterable<Key> keys() {
+        return keys(min(), max());
+    }
+
+    @Override
+    public Iterable<Key> keys(Key lo, Key hi) {
+        Objects.requireNonNull(lo, "First key cannot be null");
+        Objects.requireNonNull(hi, "Second key cannot be null");
         Queue<Key> q = new ArrayQueue<>();
-        inorder(root, q::enqueue);
+        inorder(root, lo, hi, q::enqueue);
         return q;
     }
 
@@ -236,15 +238,6 @@ public class BST<Key extends Comparable<Key>, Value> implements OrderedST<Key, V
             return select(x.left, rank);
         }
         return select(x.right, rank - size(x.left) - 1);
-    }
-
-    private void inorder(Node x, Consumer<Key> fn) {
-        if (x == null) {
-            return;
-        }
-        inorder(x.left, fn);
-        fn.accept(x.key);
-        inorder(x.right, fn);
     }
 
     private void inorder(Node x, Key lo, Key hi, Consumer<Key> fn) {

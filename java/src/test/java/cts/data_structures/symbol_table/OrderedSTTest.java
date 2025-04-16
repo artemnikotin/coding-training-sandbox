@@ -257,6 +257,6 @@ class OrderedSTTest {
 
     // Provides Ordered symbol table implementations for testing
     static Stream<OrderedST<Integer, String>> stProvider() {
-        return Stream.of(new OrderedArrayST<>(), new BST<>());
+        return Stream.of(new OrderedArrayST<>(), new BST<>(), new RedBlackBST<>());
     }
 }
