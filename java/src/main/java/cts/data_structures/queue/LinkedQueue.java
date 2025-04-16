@@ -82,4 +82,19 @@ public class LinkedQueue<T> implements Queue<T> {
             }
         };
     }
+
+    @Override
+    public String toString() {
+        var builder = new StringBuilder();
+        builder.append('[');
+        for (T t : this) {
+            builder.append(t);
+            builder.append(",");
+        }
+        if (builder.length() > 1) {
+            builder.setLength(builder.length() - 1);
+        }
+        builder.append(']');
+        return builder.toString();
+    }
 }

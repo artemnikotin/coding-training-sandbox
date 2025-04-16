@@ -46,4 +46,19 @@ public class ArrayQueue<T> implements Queue<T> {
     public Iterator<T> iterator() {
         return array.iterator();
     }
+
+    @Override
+    public String toString() {
+        var builder = new StringBuilder();
+        builder.append('[');
+        for (T s : array) {
+            builder.append(s);
+            builder.append(",");
+        }
+        if (builder.length() > 1) {
+            builder.setLength(builder.length() - 1);
+        }
+        builder.append(']');
+        return builder.toString();
+    }
 }

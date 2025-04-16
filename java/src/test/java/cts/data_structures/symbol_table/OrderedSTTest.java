@@ -1,22 +1,19 @@
 package cts.data_structures.symbol_table;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.stream.Stream;
 
-class OrderedArraySTTest {
-    private OrderedArrayST<Integer, String> st;
+class OrderedSTTest {
 
-    @BeforeEach
-    void setUp() {
-        st = new OrderedArrayST<>();
-    }
-
-    @Test
-    void testEmptySymbolTable() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testEmptySymbolTable(OrderedST<Integer, String> st) {
         assertTrue(st.isEmpty());
         assertEquals(0, st.size());
         assertNull(st.get(1));
@@ -24,8 +21,9 @@ class OrderedArraySTTest {
         assertNull(st.max());
     }
 
-    @Test
-    void testPutAndGet() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testPutAndGet(OrderedST<Integer, String> st) {
         st.put(3, "three");
         st.put(1, "one");
         st.put(2, "two");
@@ -36,16 +34,18 @@ class OrderedArraySTTest {
         assertNull(st.get(4));
     }
 
-    @Test
-    void testPutDuplicateKey() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testPutDuplicateKey(OrderedST<Integer, String> st) {
         st.put(1, "first");
         st.put(1, "second");
         assertEquals("second", st.get(1));
         assertEquals(1, st.size());
     }
 
-    @Test
-    void testDelete() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testDelete(OrderedST<Integer, String> st) {
         st.put(1, "one");
         st.put(2, "two");
         st.put(3, "three");
@@ -61,23 +61,26 @@ class OrderedArraySTTest {
         assertTrue(st.isEmpty());
     }
 
-    @Test
-    void testDeleteNonExistentKey() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testDeleteNonExistentKey(OrderedST<Integer, String> st) {
         st.put(1, "one");
         st.delete(2); // Should do nothing
         assertEquals(1, st.size());
     }
 
-    @Test
-    void testContains() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testContains(OrderedST<Integer, String> st) {
         assertFalse(st.contains(1));
         st.put(1, "one");
         assertTrue(st.contains(1));
         assertFalse(st.contains(2));
     }
 
-    @Test
-    void testMin() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testMin(OrderedST<Integer, String> st) {
         assertNull(st.min());
         st.put(3, "three");
         assertEquals(3, st.min());
@@ -85,8 +88,9 @@ class OrderedArraySTTest {
         assertEquals(1, st.min());
     }
 
-    @Test
-    void testMax() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testMax(OrderedST<Integer, String> st) {
         assertNull(st.max());
         st.put(1, "one");
         assertEquals(1, st.max());
@@ -94,8 +98,9 @@ class OrderedArraySTTest {
         assertEquals(3, st.max());
     }
 
-    @Test
-    void testFloor() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testFloor(OrderedST<Integer, String> st) {
         st.put(1, "one");
         st.put(3, "three");
         st.put(5, "five");
@@ -109,8 +114,9 @@ class OrderedArraySTTest {
         assertNull(st.floor(0));
     }
 
-    @Test
-    void testCeiling() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testCeiling(OrderedST<Integer, String> st) {
         st.put(1, "one");
         st.put(3, "three");
         st.put(5, "five");
@@ -124,8 +130,9 @@ class OrderedArraySTTest {
         assertNull(st.ceiling(6));
     }
 
-    @Test
-    void testRank() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testRank(OrderedST<Integer, String> st) {
         assertEquals(0, st.rank(1));
 
         st.put(1, "one");
@@ -141,8 +148,9 @@ class OrderedArraySTTest {
         assertEquals(3, st.rank(6));
     }
 
-    @Test
-    void testSelect() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testSelect(OrderedST<Integer, String> st) {
         st.put(1, "one");
         st.put(3, "three");
         st.put(5, "five");
@@ -155,8 +163,9 @@ class OrderedArraySTTest {
         assertThrows(IllegalArgumentException.class, () -> st.select(3));
     }
 
-    @Test
-    void testDeleteMin() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testDeleteMin(OrderedST<Integer, String> st) {
         st.put(2, "two");
         st.put(1, "one");
         st.put(3, "three");
@@ -167,13 +176,15 @@ class OrderedArraySTTest {
         assertNull(st.get(1));
     }
 
-    @Test
-    void testDeleteMinEmpty() {
-        assertThrows(NoSuchElementException.class, () -> st.deleteMin());
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testDeleteMinEmpty(OrderedST<Integer, String> st) {
+        assertThrows(NoSuchElementException.class, st::deleteMin);
     }
 
-    @Test
-    void testDeleteMax() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testDeleteMax(OrderedST<Integer, String> st) {
         st.put(2, "two");
         st.put(1, "one");
         st.put(3, "three");
@@ -184,13 +195,15 @@ class OrderedArraySTTest {
         assertNull(st.get(3));
     }
 
-    @Test
-    void testDeleteMaxEmpty() {
-        assertThrows(NoSuchElementException.class, () -> st.deleteMax());
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testDeleteMaxEmpty(OrderedST<Integer, String> st) {
+        assertThrows(NoSuchElementException.class, st::deleteMax);
     }
 
-    @Test
-    void testSizeRange() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testSizeRange(OrderedST<Integer, String> st) {
         st.put(1, "one");
         st.put(2, "two");
         st.put(3, "three");
@@ -203,8 +216,9 @@ class OrderedArraySTTest {
         assertEquals(0, st.size(5, 1));
     }
 
-    @Test
-    void testKeysRange() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testKeysRange(OrderedST<Integer, String> st) {
         st.put(1, "one");
         st.put(2, "two");
         st.put(3, "three");
@@ -217,8 +231,9 @@ class OrderedArraySTTest {
         assertIterableEquals(List.of(), st.keys(5, 1));
     }
 
-    @Test
-    void testKeys() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testKeys(OrderedST<Integer, String> st) {
         st.put(3, "three");
         st.put(1, "one");
         st.put(2, "two");
@@ -226,8 +241,9 @@ class OrderedArraySTTest {
         assertIterableEquals(List.of(1, 2, 3), st.keys());
     }
 
-    @Test
-    void testNullKeyOperations() {
+    @ParameterizedTest
+    @MethodSource("stProvider")
+    void testNullKeyOperations(OrderedST<Integer, String> st) {
         assertThrows(NullPointerException.class, () -> st.put(null, "value"));
         assertThrows(NullPointerException.class, () -> st.get(null));
         assertThrows(NullPointerException.class, () -> st.delete(null));
@@ -237,5 +253,10 @@ class OrderedArraySTTest {
         assertThrows(NullPointerException.class, () -> st.rank(null));
         assertThrows(NullPointerException.class, () -> st.size(null, 1));
         assertThrows(NullPointerException.class, () -> st.keys(null, 1));
+    }
+
+    // Provides Ordered symbol table implementations for testing
+    static Stream<OrderedST<Integer, String>> stProvider() {
+        return Stream.of(new OrderedArrayST<>(), new BST<>());
     }
 }
