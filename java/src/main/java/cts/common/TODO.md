@@ -5,8 +5,10 @@
 - [x] shell sort
 - [X] merge sort
 - [x] quick sort
-- [ ] heap sort
+- [X] heap sort
 
-### bst
-- [ ] morris in-order traversal
-- [ ] morris pre-order traversal
+### tree traversal
+- [X] dsf traversal (pre-order, in-order, post-order)
+- [X] iterative dfs traversal
+- [X] morris traversal
+- [ ] bsf traversal
