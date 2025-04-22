@@ -1,6 +1,7 @@
 package cts.common.tree_traversal;
 
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -85,6 +86,16 @@ class TraversalNodeTest {
                 Arrays.toString(expected.toArray()),
                 Arrays.toString(list.toArray())
         ));
+    }
+
+    @Test
+    void testLevelOrder() {
+        var expected = Arrays.asList("F", "B", "G", "A", "D", "I", "C", "E", "H");
+
+        List<String> list = new ArrayList<>();
+        BreadthFirstSearch.levelOrder(root, list::add);
+
+        assertIterableEquals(expected, list);
     }
 
     static Stream<Arguments> preOrderAlgorithms() {
