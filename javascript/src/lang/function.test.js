@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 
-describe("Javascript/DataTypes/Function", () => {
+describe("Javascript/Function", () => {
   test("Named function expression", () => {
     /* A named function expression can be accessed by function name only within the function itself */
     const myVariable = function myFunction() {

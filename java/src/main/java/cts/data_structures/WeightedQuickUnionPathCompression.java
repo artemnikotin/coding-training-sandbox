@@ -1,11 +1,28 @@
 package cts.data_structures;
 
+/**
+ * An implementation of the Union-Find data structure (Disjoint Set Union - DSU)
+ * using weighted quick union with path compression optimization.
+ * This data structure efficiently handles dynamic connectivity problems.
+ */
 public class WeightedQuickUnionPathCompression {
+    /** Array to store parent of each element */
     private final int[] parents;
-    private final int[] size; // To keep track of the size of each tree
 
-    // Constructor to initialize the parent and size arrays
+    /** Array to store size of each component (tree) */
+    private final int[] size;
+
+    /**
+     * Initializes the Union-Find data structure with n elements.
+     * Each element starts as its own parent with size 1.
+     *
+     * @param n The number of elements in the data structure
+     * @throws IllegalArgumentException if n is less than 0
+     */
     public WeightedQuickUnionPathCompression(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Number of elements must be non-negative");
+        }
         parents = new int[n];
         size = new int[n];
         for (int i = 0; i < n; i++) {
@@ -14,8 +31,14 @@ public class WeightedQuickUnionPathCompression {
         }
     }
 
-    // Union two elements by linking the root of the smaller tree to the root of the
-    // larger tree
+    /**
+     * Connects two elements by linking the root of the smaller tree to the root of the larger tree.
+     * Implements union by size to keep trees relatively flat.
+     *
+     * @param p The first element to connect
+     * @param q The second element to connect
+     * @throws IllegalArgumentException if p or q are out of bounds
+     */
     public void union(int p, int q) {
         int rootP = find(p);
         int rootQ = find(q);
@@ -24,7 +47,7 @@ public class WeightedQuickUnionPathCompression {
             return; // Already connected
         }
 
-        // Attach the smaller tree to the larger tree
+        // Weighted union: attach smaller tree to larger tree
         if (size[rootP] < size[rootQ]) {
             parents[rootP] = rootQ;
             size[rootQ] += size[rootP]; // Update the size of the larger tree
@@ -34,13 +57,28 @@ public class WeightedQuickUnionPathCompression {
         }
     }
 
-    // Check if two elements are connected
+    /**
+     * Checks if two elements are in the same connected component.
+     *
+     * @param p The first element
+     * @param q The second element
+     * @return true if p and q are connected, false otherwise
+     * @throws IllegalArgumentException if p or q are out of bounds
+     */
     public boolean connected(int p, int q) {
         return find(p) == find(q);
     }
 
-    // Find the root of the element with path compression
+    /**
+     * Finds the root of an element with path compression.
+     * Path compression flattens the structure of the tree for faster future queries.
+     *
+     * @param p The element whose root is to be found
+     * @return The root of the component containing p
+     * @throws IllegalArgumentException if p is out of bounds
+     */
     private int find(int p) {
+        validate(p);
         while (p != parents[p]) {
             parents[p] = parents[parents[p]]; // Path compression
             p = parents[p];
@@ -48,7 +86,23 @@ public class WeightedQuickUnionPathCompression {
         return p;
     }
 
-    // Main method for testing
+    /**
+     * Validates that p is a valid index.
+     *
+     * @param p The index to validate
+     * @throws IllegalArgumentException if p is out of bounds
+     */
+    private void validate(int p) {
+        if (p < 0 || p >= parents.length) {
+            throw new IllegalArgumentException("Index " + p + " is out of bounds");
+        }
+    }
+
+    /**
+     * Main method for testing the Union-Find implementation.
+     *
+     * @param args Command line arguments (not used)
+     */
     public static void main(String[] args) {
         WeightedQuickUnionPathCompression uf = new WeightedQuickUnionPathCompression(10);
 

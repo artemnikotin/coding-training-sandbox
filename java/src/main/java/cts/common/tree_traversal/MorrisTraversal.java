@@ -22,19 +22,19 @@ public class MorrisTraversal {
                 node = node.right;
             } else {
                 // Case 2: Has left child - find rightmost node in left subtree
-                TraversalNode<V> prev = node.left;
-                while (prev.right != null && prev.right != node) {
-                    prev = prev.right;
+                TraversalNode<V> predecessor = node.left;
+                while (predecessor.right != null && predecessor.right != node) {
+                    predecessor = predecessor.right;
                 }
 
-                if (prev.right == null) {
+                if (predecessor.right == null) {
                     // Case 2a: Create thread and visit node (pre-order visit point)
-                    prev.right = node;
+                    predecessor.right = node;
                     visitFn.accept(node.value);
                     node = node.left;
                 } else {
                     // Case 2b: Thread already exists - remove it and move right
-                    prev.right = null;
+                    predecessor.right = null;
                     node = node.right;
                 }
             }
@@ -92,18 +92,18 @@ public class MorrisTraversal {
                 curr = curr.right;
             } else {
                 // Case 2: Has left child - find rightmost node in left subtree
-                TraversalNode<V> prev = curr.left;
-                while (prev.right != null && prev.right != curr) {
-                    prev = prev.right;
+                TraversalNode<V> predecessor = curr.left;
+                while (predecessor.right != null && predecessor.right != curr) {
+                    predecessor = predecessor.right;
                 }
 
-                if (prev.right == null) {
+                if (predecessor.right == null) {
                     // Case 2a: Create thread and move left
-                    prev.right = curr;
+                    predecessor.right = curr;
                     curr = curr.left;
                 } else {
                     // Case 2b: Thread exists - process nodes in reverse
-                    prev.right = null;
+                    predecessor.right = null;
                     reverseAddNodes(curr.left, visitFn);
                     curr = curr.right;
                 }
