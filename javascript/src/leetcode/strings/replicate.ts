@@ -1,3 +1,5 @@
+// Leetcode | Easy | 2796. Repeat String
+
 // Export an empty object to make this file a module (needed for global declarations)
 export { }
 
@@ -5,7 +7,6 @@ export { }
 declare global {
   interface String {
     /**
-     * Leetcode | Easy | 2796. Repeat String
      * Creates a new string by repeating the original string a specified number of times
      * @param times - The number of times to repeat the string
      * @returns The new repeated string
