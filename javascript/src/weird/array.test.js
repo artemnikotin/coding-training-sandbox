@@ -22,4 +22,9 @@ describe('Weired/Array', () => {
     expect(arr.includes(NaN)).toBe(true);
     expect(arr.indexOf(NaN)).toBe(-1); // weird
   });
+
+  test("Default JavaScript sort method coerces types to string.", () => {
+    const arr = [1, 9, 10];
+    expect(arr.sort()).toEqual([1, 10, 9]); // weird
+  });
 });
