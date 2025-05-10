@@ -1,9 +1,9 @@
 import { describe, expect, test } from "vitest";
-import { ProtoMail } from "./prototype";
+import { EmailAddress } from "./explitExample";
 
-describe("Patterns/Prototype", () => {
-  test("Create clone using Prototype pattern", () => {
-    const original = new ProtoMail("johndoe@example.com");
+describe("Patterns/Prototype - Example", () => {
+  test("Explit prototype cloning", () => {
+    const original = new EmailAddress("johndoe@example.com");
     original.setName("John");
     expect(`${original}`).toBe("johndoe@example.com <John>");
 

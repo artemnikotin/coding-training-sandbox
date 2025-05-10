@@ -1,9 +1,7 @@
 import { describe, expect, test } from "vitest";
-import { HtmlFactory } from "./HTMLFactory";
-import { GUIFactory } from "./GUIFactory";
-import { SvgFactory } from "./SVGFactory";
+import { Factory, HtmlFactory, SvgFactory } from "./example";
 
-function makeApp(factory: GUIFactory) {
+function makeApp(factory: Factory) {
   const button = factory.createButton();
   const buttonText = factory.createText();
   const header = factory.createText();

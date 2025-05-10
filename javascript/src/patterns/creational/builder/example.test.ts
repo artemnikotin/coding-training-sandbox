@@ -1,5 +1,5 @@
 import { describe, expect, test } from "vitest";
-import { UrlBuilder } from "./UrlBuilder";
+import { UrlBuilder } from "./example";
 
 describe("Pattern/Builder", () => {
   test("UrlBuilder", () => {

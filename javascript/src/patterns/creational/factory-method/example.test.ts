@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
-import { PaymentMethodFactory } from "./factory";
+import { PaymentMethodFactory } from "./example";
 
-describe("Patterns/Factory Method", () => {
+describe("Patterns/FactoryMethod - Example", () => {
   test("Create different implementations", () => {
     const payment1 = PaymentMethodFactory.createPaymentMethod('credit-card');
     expect(payment1.pay(100)).toBe("Paid $100 via Credit Card");
