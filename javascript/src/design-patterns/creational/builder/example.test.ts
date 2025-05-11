@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { UrlBuilder } from "./example";
 
-describe("Pattern/Builder", () => {
+describe("DesignPattern/Builder", () => {
   test("UrlBuilder", () => {
     const builder = new UrlBuilder();
 

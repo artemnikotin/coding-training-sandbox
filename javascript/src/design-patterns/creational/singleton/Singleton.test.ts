@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { Singleton } from "./Singleton";
 
-describe("Patterns/Singleton", () => {
+describe("DesignPattern/Singleton", () => {
   test("Singleton via inheritance", () => {
     class Foo extends Singleton {
       public getFive() {

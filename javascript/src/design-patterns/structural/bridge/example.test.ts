@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { AdvancedRemote, BasicRemote, Radio, TV } from "./example";
 
-describe("Pattern/Bridge - Example", () => {
+describe("DesignPattern/Bridge - Example", () => {
   test("Separates abstraction (RemoteControl) from implementation (Device)", () => {
     const tv = new TV();
     const radio = new Radio();

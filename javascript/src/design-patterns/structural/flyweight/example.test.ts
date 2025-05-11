@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { CharacterFactory, TextCharacter } from "./example";
 
-describe("Pattern/Flyweight", () => {
+describe("DesignPattern/Flyweight", () => {
   test("Shares common data between objects", () => {
     const factory = new CharacterFactory();
 

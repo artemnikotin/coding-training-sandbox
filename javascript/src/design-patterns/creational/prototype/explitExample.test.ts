@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { EmailAddress } from "./explitExample";
 
-describe("Patterns/Prototype - Example", () => {
+describe("DesignPattern/Prototype - Example", () => {
   test("Explit prototype cloning", () => {
     const original = new EmailAddress("johndoe@example.com");
     original.setName("John");

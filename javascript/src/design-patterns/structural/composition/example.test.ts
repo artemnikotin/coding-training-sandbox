@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { Circle, Square, Container } from "./example";
 
-describe("Pattern/Composition - Example", () => {
+describe("DesignPattern/Composition - Example", () => {
   test("Render graphic components tree", () => {
     const circle = new Circle(0, 0, 5);
     expect(circle.render()).toBe("circle(0,0,5)");

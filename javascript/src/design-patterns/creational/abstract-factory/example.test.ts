@@ -17,7 +17,7 @@ function makeApp(factory: Factory) {
   return ui;
 }
 
-describe("Pattern/AbstractFactory", () => {
+describe("DesignPattern/AbstractFactory", () => {
   test("HTML GUI app", () => {
     const factory = new HtmlFactory(); 
     const ui = makeApp(factory);

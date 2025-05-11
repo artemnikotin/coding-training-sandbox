@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { BlackCoffee, Coffee, MilkDecorator, SugarDecorator, WhippedCreamDecorator } from "./example";
 
-describe("Pattern/Decorator - Example", () => {
+describe("DesignPattern/Decorator - Example", () => {
 	test("Coffee menu", () => {
 		let coffee: Coffee = new BlackCoffee();
 		expect(coffee.description()).toBe("Black coffee");

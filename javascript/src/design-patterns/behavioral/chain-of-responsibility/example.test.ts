@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { ManagerHandler, DirectorHandler, CEOHandler, approve } from "./example";
 
-describe("Pattern/ChainOfResponsibility", () => {
+describe("DesignPattern/ChainOfResponsibility", () => {
   test("Approval process", () => {
     const manager = new ManagerHandler();
     const director = new DirectorHandler();

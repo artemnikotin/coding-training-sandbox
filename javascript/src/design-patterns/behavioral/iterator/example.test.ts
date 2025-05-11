@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { Collection } from "./example";
 
-describe("Pattern/Iterator", () => {
+describe("DesignPattern/Iterator", () => {
   test("Iterate over collection", () => {
     const collection = new Collection<number>();
     collection.add(1);

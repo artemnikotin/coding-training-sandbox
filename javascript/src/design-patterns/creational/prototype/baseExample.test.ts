@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { Person, Employee } from "./baseExample";
 
-describe("Patterns/Prototype - Example", () => {
+describe("DesignPattern/Prototype - Example", () => {
   test("Base prototype cloning", () => {
     const person = new Person("Alice", 30);
     const personClone = person.clone();

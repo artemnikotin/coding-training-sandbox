@@ -1,7 +1,7 @@
 import { describe, expect, test } from "vitest";
 import { Light, LightOffCommand, LightOnCommand, RemoteControl, SetThermostatCommand, Thermostat } from "./example";
 
-describe("Pattern/Command", () => {
+describe("DesignPattern/Command", () => {
   test("Control devices via commands", () => {
     const livingRoomLight = new Light();
     const bedroomThermostat = new Thermostat();
