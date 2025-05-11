@@ -44,7 +44,7 @@ class Subsystem2 {
 }
 
 // Client just uses the simple facade
-function runApp(facade: Facade) {
+export function runApp(facade: Facade) {
     return facade.doEverything();
 }
 
