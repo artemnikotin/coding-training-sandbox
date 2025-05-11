@@ -17,7 +17,7 @@ describe("Pattern/Bridge - Example", () => {
     advancedRemoteForRadio.togglePower();
     advancedRemoteForRadio.mute();
     advancedRemoteForRadio.presetChannel(102.3);
-    expect(tv.getVolume()).toBe(0);
-    expect(tv.getChannel).toBe(102.3);
+    expect(radio.getVolume()).toBe(0);
+    expect(radio.getChannel()).toBe(102.3);
   });
 });
