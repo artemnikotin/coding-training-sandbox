@@ -17,5 +17,5 @@ describe("DesignPattern/TemplateMethod", () => {
     cocktail.prepareBeverage();
     expect(cocktail.getTaste()).toBe("sweet");
     expect(cocktail.getTemperature()).toBe(20);
-  })
+  });
 })
