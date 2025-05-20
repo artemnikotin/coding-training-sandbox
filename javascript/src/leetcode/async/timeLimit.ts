@@ -50,14 +50,9 @@ export function timeLimitNoRace(fn: Fn, t: number): Fn {
 
       // Execute the original function `fn` with the provided arguments.
       fn(...args)
-        .then((result) => {
-          // If `fn` completes successfully, resolve the promise with its result.
-          resolve(result);
-        })
-        .catch((error) => {
-          // If `fn` throws an error, reject the promise with that error.
-          reject(error);
-        })
+        // If `fn` completes successfully, resolve the promise with its result.
+        // If `fn` throws an error, reject the promise with that error.
+        .then(resolve, reject)
         .finally(() => {
           // Clear the timeout to prevent it from triggering after `fn` has completed.
           clearTimeout(timeout);

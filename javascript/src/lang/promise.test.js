@@ -1,7 +1,7 @@
 import { vi, beforeEach, afterEach, describe, test, expect } from "vitest";
 
 const thenFn = vi.fn();
-const catchFn = vi.fn(() => 'Rej');
+const catchFn = vi.fn(() => 'Catch');
 const finallyFn = vi.fn();
 
 describe("Javascript/Promise", () => {
@@ -62,7 +62,7 @@ describe("Javascript/Promise", () => {
     await vi.runAllTimersAsync();
 
     expect(catchFn).toBeCalledTimes(1);
-    expect(thenFn.mock.calls).toEqual([['Rej']]);
+    expect(thenFn.mock.calls).toEqual([['Catch']]);
   });
 
   test("Thenable promise", async () => {
@@ -151,7 +151,7 @@ describe("Javascript/Promise", () => {
       })
   });
 
-  test("Promise allSettled returns", () => {
+  test("Promise.allSettled wait for all promises to be fulfilled and return an array of special objects", () => {
     Promise.allSettled([
       new Promise(resolve => setTimeout(resolve, 200, 'Ok')),
       new Promise((_, reject) => setTimeout(reject, 100, 'Err')),
@@ -166,5 +166,19 @@ describe("Javascript/Promise", () => {
       .then((result) => {
         expect(result).toEqual([]);
       });
+  });
+
+  test("Promise execution time", async () => {
+    const fn = vi.fn();
+
+    Promise.resolve().then(() => fn(2)).then(() => fn(4));
+    Promise.resolve().then(() => fn(3)).then(() => fn(5));
+
+    setTimeout(fn, 0, 6);
+
+    fn(1);
+
+    await vi.runAllTimersAsync();
+    expect(fn.mock.calls).toEqual([[1], [2], [3], [4], [5], [6]])
   });
 });

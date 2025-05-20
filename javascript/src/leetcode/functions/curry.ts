@@ -8,25 +8,20 @@
  * @returns {Function} - A curried version of the input function.
  */
 export function curry(fn: Function): Function {
-  return function(...args: any[]) {
+  return function (...args: any[]) {
     // Accumulate the arguments passed so far.
-    let argumentsAccumulator: any[] = [...args];
+    let argumentsAccumulator: any[] = [];
+    // A function that continues to accumulate arguments.
+    function curried(...args: any[]) {
+      // Append the new arguments to the accumulator.
+      argumentsAccumulator = [...argumentsAccumulator, ...args];
 
-    // If enough arguments have been accumulated, call the original function.
-    if (argumentsAccumulator.length >= fn.length) {
-      return fn(...argumentsAccumulator);
-    } else {
-      // Otherwise, return a new function that continues to accumulate arguments.
-      return function curried(...args: any[]) {
-        // Append the new arguments to the accumulator.
-        argumentsAccumulator = [...argumentsAccumulator, ...args];
-
-        // If enough arguments are now available, call the original function.
-        // Otherwise, continue currying by returning the curried function.
-        return (argumentsAccumulator.length >= fn.length) 
-          ? fn(...argumentsAccumulator) 
-          : curried;
-      };
-    }
+      // If enough arguments are now available, call the original function.
+      // Otherwise, continue currying by returning the curried function.
+      return (argumentsAccumulator.length >= fn.length)
+        ? fn(...argumentsAccumulator)
+        : curried;
+    };
+    return curried(...args);
   }
 }

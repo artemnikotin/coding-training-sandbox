@@ -23,4 +23,21 @@ describe("Javascript/Function", () => {
 
     expect(myFunction(false)).toBe(false);
   });
+
+  test("arguments", () => {
+    function myFixedFunction(a, b, c) {
+      expect(arguments).not.toEqual([1, 2, 3]);
+      expect(Array.from(arguments)).toEqual([1, 2, 3]); // es6
+      expect(Array.prototype.slice.call(arguments)).toEqual([1, 2, 3]); // es5
+    }
+    myFixedFunction(1, 2, 3);
+    expect(myFixedFunction.length).toBe(3);
+
+    function myDynamicFunction(a, ...rest) {
+      expect(rest).toEqual([2, 3]);
+      expect(Array.from(arguments)).toEqual([1, 2, 3]);
+    }
+    myDynamicFunction(1, 2, 3);
+    expect(myDynamicFunction.length).toBe(1);
+  });
 });
