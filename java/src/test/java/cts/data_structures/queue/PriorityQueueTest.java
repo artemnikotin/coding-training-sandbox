@@ -15,10 +15,10 @@ class PriorityQueueTest {
     @BeforeEach
     void setUp() {
         // Max heap (higher numbers have higher priority)
-        maxHeap = new PriorityQueue<Integer>(Comparator.naturalOrder());
+        maxHeap = new PriorityQueue<Integer>(Comparator.reverseOrder());
 
         // Min heap (lower numbers have higher priority)
-        minHeap = new PriorityQueue<Integer>(Comparator.reverseOrder());
+        minHeap = new PriorityQueue<Integer>(Comparator.naturalOrder());
     }
 
     @Test
@@ -116,7 +116,7 @@ class PriorityQueueTest {
         heap.enqueue(3);
         heap.enqueue(4);
 
-        assertEquals(4, heap.peek());
+        assertEquals(0, heap.peek());
 
         Integer item = heap.get(1);
         comparator.setTheHighestPriority(item);
@@ -136,12 +136,12 @@ class PriorityQueueTest {
         heap.enqueue(3);
         heap.enqueue(4);
 
-        assertEquals(4, heap.peek());
+        assertEquals(1, heap.peek());
 
         comparator.switchNatural();
         heap.doOnOrderChanged(); // Should reorganize the heap
 
-        assertEquals(1, heap.peek());
+        assertEquals(4, heap.peek());
     }
 
     @Test
@@ -195,9 +195,9 @@ class PriorityQueueTest {
         public int compare(T o1, T o2) {
             if (highest != null) {
                 if (o1 == highest) {
-                    return 1;
-                } else if (o2 == highest) {
                     return -1;
+                } else if (o2 == highest) {
+                    return 1;
                 }
             }
             return isNatural ? naturalOrder.compare(o1, o2) : reverseOrder.compare(o1, o2);

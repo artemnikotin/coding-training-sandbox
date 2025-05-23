@@ -114,7 +114,7 @@ public class PriorityQueue<T> implements Queue<T> {
 
         items.set(index, last);  // Replace removed element with last element
         // Restore heap order by moving the replacement element up or down as needed
-        if (comparator.compare(last, value) < 0) {
+        if (comparator.compare(last, value) > 0) {
             sink(index);
         } else {
             swim(index);
@@ -125,7 +125,7 @@ public class PriorityQueue<T> implements Queue<T> {
 
     /**
      * Get the element at the specified index.
-     * @param index the index of the element to remove
+     * @param index the index of the element
      * @return the element
      * @throws IndexOutOfBoundsException if the index is out of range
      */
@@ -200,13 +200,23 @@ public class PriorityQueue<T> implements Queue<T> {
     }
 
     /**
+     * Compares two elements
+     * @param first first element
+     * @param second second element
+     * @return true if first element has lower priority than second one
+     */
+    private boolean less(T first, T second) {
+        return this.comparator.compare(first, second) > 0;
+    }
+
+    /**
      * Compares two elements at the given indices.
      * @param i first element index
      * @param j second element index
      * @return true if element at i has lower priority than element at j
      */
     private boolean less(int i, int j) {
-        return this.comparator.compare(items.get(i), items.get(j)) < 0;
+        return less(items.get(i), items.get(j));
     }
 
     /**
