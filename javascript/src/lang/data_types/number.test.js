@@ -32,4 +32,20 @@ describe("Javascript/DataTypes/Number", () => {
 
     expect(objTen + 5).toBe(primeTen + 5);
   });
+
+  test("Right shift cuts number to 32 bit", () => {
+    const num = 0b111010;
+    const shiftedNum = num >> 2;
+
+    expect(num).toBe(58);
+    expect(num.toString(2)).toBe("111010");
+    expect(shiftedNum).toBe(14);
+    expect(shiftedNum.toString(2)).toBe("1110");
+
+    const max32bitInteger = Math.pow(2, 31) - 1;
+    
+    expect(max32bitInteger).toBe(2_147_483_647);
+    expect(max32bitInteger >> 1).toBe(1_073_741_823);
+    expect((max32bitInteger + 1) >> 1).toBe(-1_073_741_824);
+  });
 });
