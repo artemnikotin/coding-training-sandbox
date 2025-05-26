@@ -1,6 +1,6 @@
 package cts.data_structures.queue;
 
-import cts.data_structures.ResizingArray;
+import cts.data_structures.DynamicArray;
 import java.util.Comparator;
 import java.util.Iterator;
 
@@ -12,7 +12,7 @@ import java.util.Iterator;
  */
 public class PriorityQueue<T> implements Queue<T> {
     // Underlying resizable array to store heap elements
-    private final ResizingArray<T> items;
+    private final DynamicArray<T> items;
     // Comparator to determine the priority order
     private final Comparator<T> comparator;
 
@@ -21,7 +21,7 @@ public class PriorityQueue<T> implements Queue<T> {
      * @param comparator the comparator to determine priority order
      */
     PriorityQueue(Comparator<T> comparator) {
-        items = new ResizingArray<>();
+        items = new DynamicArray<>();
         this.comparator = comparator;
     }
 

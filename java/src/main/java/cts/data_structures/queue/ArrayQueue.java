@@ -1,14 +1,14 @@
 package cts.data_structures.queue;
 
-import cts.data_structures.ResizingArray;
+import cts.data_structures.DynamicArray;
 
 import java.util.Iterator;
 
 public class ArrayQueue<T> implements Queue<T> {
-    private final ResizingArray<T> array;
+    private final DynamicArray<T> array;
 
     public ArrayQueue() {
-        array = new ResizingArray<>();
+        array = new DynamicArray<>();
     }
 
     @Override

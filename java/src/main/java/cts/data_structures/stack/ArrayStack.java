@@ -1,14 +1,14 @@
 package cts.data_structures.stack;
 
-import cts.data_structures.ResizingArray;
+import cts.data_structures.DynamicArray;
 
 import java.util.Iterator;
 
 public class ArrayStack<T> implements Stack<T> {
-    private final ResizingArray<T> array;
+    private final DynamicArray<T> array;
 
     public ArrayStack() {
-        array = new ResizingArray<>();
+        array = new DynamicArray<>();
     }
 
     @Override

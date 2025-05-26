@@ -1,17 +1,17 @@
 package cts.data_structures.symbol_table;
 
-import cts.data_structures.ResizingArray;
+import cts.data_structures.DynamicArray;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class OrderedArrayST<Key extends Comparable<Key>, Value> implements OrderedST<Key, Value> {
-    private final ResizingArray<Key> keys;
-    private final ResizingArray<Value> values;
+    private final DynamicArray<Key> keys;
+    private final DynamicArray<Value> values;
 
     public OrderedArrayST() {
-        this.keys = new ResizingArray<>();
-        this.values = new ResizingArray<>();
+        this.keys = new DynamicArray<>();
+        this.values = new DynamicArray<>();
     }
 
     @Override
