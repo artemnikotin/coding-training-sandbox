@@ -1,5 +1,5 @@
 /**
- * Leetcode | Medium | 2633. Convert Object to JSON String
+ * Leetcode | Medium | 2628. JSON Deep Equal
  * This function checks if two objects or arrays are deeply equal.
  * @param o1 - The first object or array to compare.
  * @param o2 - The second object or array to compare.

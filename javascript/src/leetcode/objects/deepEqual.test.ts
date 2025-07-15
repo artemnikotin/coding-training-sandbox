@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest';
 
 import { areDeeplyEqual } from './deepEqual';
 
-describe("Leetcode | 2633. Convert Object to JSON String", () => {
+describe("Leetcode | 2628. JSON Deep Equal", () => {
   test('primetives are equal', () => {
     const primetives = [
       1,

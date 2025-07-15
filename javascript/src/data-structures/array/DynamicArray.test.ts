@@ -1,16 +1,16 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { DynamicArray } from './DynamicArray'; // Update the path if needed
+import { SlidingDynamicArray } from './SlidingDynamicArray'; // Update the path if needed
 
 describe('DynamicArray', () => {
-  let arr: DynamicArray<number>;
+  let arr: SlidingDynamicArray<number>;
 
   beforeEach(() => {
-    arr = new DynamicArray<number>();
+    arr = new SlidingDynamicArray<number>();
   });
 
   it('should start empty', () => {
     expect(arr.length).toBe(0);
-    expect(arr.isEmpty()).toBe(true);
+    expect(arr.length).toBe(0);
   });
 
   it('should push and pop items', () => {
@@ -70,6 +70,6 @@ describe('DynamicArray', () => {
     for (let i = 19; i >= 0; i--) {
       expect(arr.pop()).toBe(i);
     }
-    expect(arr.isEmpty()).toBe(true);
+    expect(arr.length).toBe(0);
   });
 });

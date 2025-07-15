@@ -1,6 +1,6 @@
 import { describe, test, expect } from "vitest";
 
-describe("Javascript/Symbol", () => {
+describe("Javascript/DataTypes/Symbol", () => {
   test("Symbol.toStringTag", () => {
     const obj = {
       get [Symbol.toStringTag]() {
