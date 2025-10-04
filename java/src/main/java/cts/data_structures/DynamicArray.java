@@ -77,7 +77,7 @@ public class DynamicArray<T> implements Iterable<T> {
         }
         size--;
         // Resize the array if it's only 25% full
-        if (size > DEFAULT_INITIAL_CAPACITY && size == items.length / 4) {
+        if (items.length > DEFAULT_INITIAL_CAPACITY && size == items.length / 4) {
             resize(items.length / 2);
         }
         return item;

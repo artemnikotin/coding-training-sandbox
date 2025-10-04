@@ -138,14 +138,23 @@ class DynamicArrayTest {
         assertEquals(4, array.capacity());
 
         array.addLast(5);
+        array.addLast(6);
+        array.addLast(7);
+        array.addLast(8);
         assertEquals(8, array.capacity());
+
+        array.addLast(9);
+        assertEquals(16, array.capacity());
 
         array.removeFirst();
         array.removeFirst();
-        assertEquals(8, array.capacity());
+        array.removeFirst();
+        array.removeFirst();
+        assertEquals(16, array.capacity());
 
         array.removeFirst();
-        assertEquals(4, array.capacity());
+        assertEquals(4, array.size());
+        assertEquals(8, array.capacity());
     }
 
     @Test
